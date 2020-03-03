@@ -3,6 +3,11 @@
     class="ag-theme-balham"
     [rowData]="rowData"
     [columnDefs]="columnDefs"
+    [enableRangeSelection]="true"
+    [domLayout]="domLayout"
     [frameworkComponents]="frameworkComponents"
+    [getRowHeight]="getRowHeight"
+      (gridSizeChanged)="onGridSizeChanged($event)"
+      (gridReady)="onGridReady($event)"
     >
 </ag-grid-angular>

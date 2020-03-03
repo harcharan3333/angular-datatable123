@@ -5,16 +5,22 @@ import { ICellRendererParams, IAfterGuiAttachedParams } from 'ag-grid';
 @Component({
   selector: 'app-renderer',
   template: `
-    <button type="button" (click)="onClick($event)">{{label}}</button>
+    <button 
+      *ngIf="this.success === 0"
+      type="button" (click)="onClick($event)">
+      {{label}}
+    </button>
     `,
 })
 export class RendererComponent implements ICellRendererAngularComp{
   
   params;
   label: string;
+  success: number;
 
   agInit(params): void {
     this.params = params;
+    this.success = this.params.value;
     this.label = this.params.label || null;
   }
 
@@ -34,6 +40,7 @@ export class RendererComponent implements ICellRendererAngularComp{
 
     }
   }
+  
 
   constructor() { }
 
