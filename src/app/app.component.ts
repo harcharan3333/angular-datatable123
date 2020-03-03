@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import moment from 'moment';
-import { ButtonRendererComponent } from './renderer/button-renderer.component';
+import { RendererComponent } from './renderer/renderer.component';
 
 @Component({
   selector: 'my-app',
@@ -11,7 +11,6 @@ export class AppComponent  {
   title = 'app';
   frameworkComponents: any;
   rowDataClicked1 = {};
-  rowDataClicked2 = {};
 
     columnDefs = [
         {headerName: 'Order Number', field: 'orderNumber', sortable: true, filter: true },
@@ -37,7 +36,12 @@ export class AppComponent  {
     }},,
     
         {headerName: 'Transaction Response', field: 'transactionResponse', sortable: true, filter: true},
-        {headerName: 'Action', field: 'success', sortable: true, filter: true}
+        {headerName: 'Action', field: 'success', sortable: true, filter: true,
+        cellRenderer: 'buttonRenderer',
+        cellRendererParams: {
+        onClick: this.onBtnClick1.bind(this),
+        label: 'Click 1'
+      }}
     ];
 
     rowData =  [
@@ -247,4 +251,12 @@ export class AppComponent  {
         }
 
     ]
+    constructor() {
+    this.frameworkComponents = {
+      buttonRenderer: RendererComponent,
+    }
+  }
+    onBtnClick1(e) {
+    this.rowDataClicked1 = e.rowData;
+  }
 }
