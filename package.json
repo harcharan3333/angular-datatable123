@@ -47,7 +47,7 @@
     "datatables.net": "1.10.20",
     "datatables.net-dt": "1.10.20",
     "dependencies": "0.0.1",
-    "jquery": "3.4.1",
+    "jquery": "3.5.0",
     "moment": "2.24.0",
     "ng-packagr": "4.7.1",
     "ng-pick-datetime": "7.0.0",
